@@ -1,0 +1,552 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{newtxtext,newtxmath}
+\usepackage{hyperref}
+\usepackage{titling}
+
+% Compact layout without changing font size
+\geometry{top=1.15cm,bottom=1.25cm,left=1.45cm,right=1.45cm}
+\setstretch{1.0}
+\setlength{\parskip}{1pt}
+\setlength{\parindent}{0pt}
+
+% Compact figures and equations
+\captionsetup{font=footnotesize,skip=2pt}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{2pt}
+
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+\setlength{\abovedisplayshortskip}{2pt}
+\setlength{\belowdisplayshortskip}{2pt}
+
+% Two figures per row
+\newcommand{\twopics}[6]{%
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.485\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{#1}
+        \caption{#2}
+        \label{#3}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.485\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{#4}
+        \caption{#5}
+        \label{#6}
+    \end{minipage}
+\end{figure}
+}
+
+\title{Investigation of Drag Force, Drag Coefficient, and Terminal Velocity}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+% ABSTRACT
+% ============================================================
+
+\section{Abstract}
+
+The relationship between magnetic drag force and the velocity of a cart was investigated using a wireless smart cart with a magnetic damping accessory. The drag coefficient $b$ was determined in two ways: by fitting the force--velocity relation $F(v)$ and by fitting the velocity--time relation $v(t)$ after linearizing the exponential model. The two fitting methods were compared using their uncertainties, goodness of fit, residuals, and predictions of terminal velocity. The terminal velocity of the cart on an inclined track was then measured and compared with the theoretical predictions.
+
+The drag coefficients obtained from the $F(v)$ and $v(t)$ methods were $b=(0.899\pm0.013)\,\mathrm{kg/s}$ and $b=(1.107\pm0.002)\,\mathrm{kg/s}$, respectively. Their estimated 95\% confidence intervals did not overlap. The corresponding theoretical terminal velocities were $(0.131\pm0.004)\,\mathrm{m/s}$ and $(0.106\pm0.003)\,\mathrm{m/s}$, while the measured value was $(0.0719\pm0.0001)\,\mathrm{m/s}$. Neither prediction agreed with the experimental value within the 95\% uncertainty criterion, although the prediction obtained from the $v(t)$ method was closer to the measured value.
+
+% ============================================================
+% THEORETICAL BACKGROUND
+% ============================================================
+
+\section{Theoretical Background}
+
+The magnetic drag force is modeled as
+\[
+F_{\mathrm{drag}}=-bv.
+\]
+For an inclined track, the cart velocity and terminal velocity are
+\begin{equation}
+v(t)=\frac{mg\sin\theta}{b}
+\left(1-e^{-bt/m}\right),
+\qquad
+v_T=\frac{mg\sin\theta}{b}.
+\label{eq:inclined}
+\end{equation}
+
+Here, $F_{\mathrm{drag}}$ is the magnetic drag force, $b$ is the drag coefficient, $v$ is the cart velocity, $m$ is the total moving mass, $g$ is the gravitational acceleration, $\theta$ is the track inclination angle, $t$ is time, and $v_T$ is the terminal velocity. The level-track model, derivations, and linearization used in the analysis are given in Appendix~A.
+
+% ============================================================
+% MATERIAL AND METHODS
+% ============================================================
+
+\section{Material and Methods}
+
+A wireless smart cart was placed on a \(1.2\,\mathrm{m}\) aluminum track. Its position and velocity were recorded by the built-in sensor through Capstone. A magnetic-damping accessory was mounted on the cart to produce eddy-current drag.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.42\textwidth]{2_setup1.png}
+    \caption{Terminal velocity setup and magnetic damping.}
+    \label{fig:setup}
+\end{figure}
+
+The experiment consisted of three parts: in Part B, the track level was adjusted to compensate for unwanted friction; in Part C, the drag force was investigated on a level track; in Part D, the cart was released on an inclined track.
+
+The measured and given parameters were:
+\begin{itemize}
+    \item $M_1=73.0\pm0.05\,\mathrm{g}$ (magnetic damping accessory)
+    \item $M_2=270.9\pm0.05\,\mathrm{g}$ (cart)
+    \item $M_3=504.6\pm0.05\,\mathrm{g}$ (two masses)
+    \item $g=9.79127\pm0.000005\,\mathrm{m/s^2}$
+    \item $\theta=2.00\pm0.05^\circ$
+\end{itemize}
+
+% ============================================================
+% RESULTS AND DISCUSSION
+% ============================================================
+
+\section{Results and Discussion}
+
+% ---------------- Part B ----------------
+
+\subsection{Compensating for Unwanted Friction}
+
+The track was adjusted until the cart moved at approximately constant velocity. Before adjustment, the velocity decreased with time, while after adjustment it remained approximately constant, showing that the unwanted friction was substantially compensated.
+
+\twopics{2_fig1.png}{Velocity before track adjustment.}{fig:before}
+{2_fig2.png}{Velocity after track adjustment.}{fig:after}
+
+% ---------------- Part C ----------------
+
+\subsection{Exploring the Drag Force}
+
+The total mass of the moving system in Part C is
+\(m_{\mathrm{total}}=0.8485\,\mathrm{kg}\).
+The raw data were processed as described in Appendix~A.1.
+
+\subsubsection{Force as a Function of Velocity}
+
+The force--velocity data and linear fit are shown in Figures~\ref{fig:F_v_raw} and \ref{fig:F_v_fit}. Fitting
+$F(v)=kv+c$ gives
+\(k=(-0.899\pm0.013)\,\mathrm{kg/s}\).
+Comparison with \(F_{\mathrm{drag}}=-bv\) therefore gives
+\begin{equation}
+b_{F(v)}=(0.899\pm0.013)\,\mathrm{kg/s}.
+\label{eq:b_fv}
+\end{equation}
+
+The fit has \(R^2=0.9808\), indicating that a linear relationship provides a reasonable first approximation to the force--velocity data. The fitting procedure is given in Appendix~A.3.
+
+\twopics{2_fig3.png}{Force as a function of velocity (raw data).}{fig:F_v_raw}
+{2_fig4.png}{Force--velocity curve with linear fit.}{fig:F_v_fit}
+
+\subsubsection{Velocity as a Function of Time}
+
+The velocity--time data are shown in Figure~\ref{fig:v_t}. They approximately follow the expected exponential decay. After linearization, $\ln(v)$ was fitted against $t$ as described in Appendix~A.3. The fitted slope is
+\[
+k_{\mathrm{time}}=(-1.305\pm0.002)\,\mathrm{s^{-1}}.
+\]
+
+Since \(b=-m_{\mathrm{total}}k_{\mathrm{time}}\), uncertainty propagation gives
+\[
+b_{v(t)}=(1.107\pm0.002)\,\mathrm{kg/s}.
+\]
+
+Thus,
+\begin{equation}
+b_{v(t)}=(1.107\pm0.002)\,\mathrm{kg/s}.
+\label{eq:b_vt}
+\end{equation}
+
+The fit has \(R^2=0.9998\). Although this value is very close to unity, the residual structure is also considered below rather than using \(R^2\) alone to judge the model.
+
+\twopics{2_fig5.png}{Velocity as a function of time (Part C).}{fig:v_t}
+{2_fig6.png}{Linearized velocity decay ($\ln(v)$ vs.\ $t$).}{fig:ln_v_t}
+
+\subsubsection{Comparison of Drag Coefficients}
+
+The two methods give:
+
+\begin{table}[H]
+\centering
+\caption{Comparison of drag coefficients.}
+\label{tab:b_compare}
+\begin{tabular}{lccc}
+\toprule
+Method & \(b\) (kg/s) & Uncertainty (kg/s) & \(R^2\) \\
+\midrule
+\(F(v)\) fit & 0.899 & 0.013 & 0.9808 \\
+\(v(t)\) linearized & 1.107 & 0.002 & 0.9998 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Taking the quoted uncertainties as standard uncertainties, approximate 95\% confidence intervals were calculated using \(b\pm1.96\delta b\):
+\[
+b_{F(v)}\in[0.874,\,0.924]\,\mathrm{kg/s},
+\]
+\[
+b_{v(t)}\in[1.103,\,1.111]\,\mathrm{kg/s}.
+\]
+
+The intervals do not overlap, so the two measurements of \(b\) are not statistically consistent at the 95\% level. The approximately 23\% difference between their central values is therefore not explained by the quoted fitting uncertainties alone.
+
+The residual plots are shown in Appendix~A.3. The residuals of the \(F(v)\) fit are distributed approximately around zero but have a visibly larger spread. The residuals of the linearized \(v(t)\) fit are much smaller in magnitude, but they show a structured oscillatory pattern rather than completely random scatter. Thus, the high \(R^2\) value of the \(v(t)\) fit does not imply that the exponential model describes every systematic feature of the data.
+
+The two values of \(b\) were therefore also assessed by using each one to predict the terminal velocity in Part D.
+
+% ---------------- Part D ----------------
+
+\subsection{Part D: Terminal Velocity on an Inclined Track}
+
+The cart was released from rest on a track inclined at
+\(\theta=2.00^\circ\), with total mass
+\(m_D=0.3439\,\mathrm{kg}\).
+The velocity--time data and selected terminal region are shown in Figures~\ref{fig:terminal_raw} and \ref{fig:terminal_region}.
+
+\twopics{2_fig9.png}{Velocity of the cart on an inclined track (Part D).}{fig:terminal_raw}
+{2_fig10.png}{Selected terminal-velocity region (Part D).}{fig:terminal_region}
+
+For \(t\geq2.0\,\mathrm{s}\), the mean velocity gives
+\begin{equation}
+v_{T,\mathrm{exp}}
+=(0.07188\pm0.00008)\,\mathrm{m/s}.
+\label{eq:vT_exp}
+\end{equation}
+
+Using \(b_{F(v)}=(0.899\pm0.013)\,\mathrm{kg/s}\) in Eq.~\ref{eq:inclined} gives
+\begin{equation}
+v_{T,F(v)}
+=(0.131\pm0.004)\,\mathrm{m/s}.
+\label{eq:vT_fv}
+\end{equation}
+
+Using \(b_{v(t)}=(1.107\pm0.002)\,\mathrm{kg/s}\) gives
+\begin{equation}
+v_{T,v(t)}
+=(0.106\pm0.003)\,\mathrm{m/s}.
+\label{eq:vT_theory}
+\end{equation}
+
+Their approximate 95\% intervals are
+\[
+v_{T,\mathrm{exp}}\in[0.07172,\,0.07204]\,\mathrm{m/s},
+\]
+\[
+v_{T,F(v)}\in[0.123,\,0.138]\,\mathrm{m/s},
+\qquad
+v_{T,v(t)}\in[0.101,\,0.111]\,\mathrm{m/s}.
+\]
+
+Neither theoretical interval overlaps the experimental interval. Therefore, neither drag coefficient predicts the measured terminal velocity within the 95\% uncertainty criterion. However, the prediction based on \(b_{v(t)}\) is closer to the measured value than the prediction based on \(b_{F(v)}\). This provides additional support for using \(b_{v(t)}\) as the more representative estimate for Part D, while the remaining discrepancy indicates that the ideal linear-drag model does not account for all effects present in the experiment.
+
+The uncertainty calculations for both theoretical predictions are given explicitly in Appendix~A.4.
+
+% ============================================================
+% CONCLUSION
+% ============================================================
+
+\section{Conclusion}
+
+The drag coefficients obtained from the two methods were
+\(b_{F(v)}=(0.899\pm0.013)\,\mathrm{kg/s}\) and
+\(b_{v(t)}=(1.107\pm0.002)\,\mathrm{kg/s}\).
+Their 95\% confidence intervals did not overlap, indicating that the difference between the two estimates is statistically significant. The \(v(t)\) method produced the larger \(R^2\) and smaller fitting uncertainty, although its residuals showed a small systematic structure.
+
+Using the two coefficients gave theoretical terminal velocities of
+\(0.131\pm0.004\,\mathrm{m/s}\) and
+\(0.106\pm0.003\,\mathrm{m/s}\), respectively, compared with the measured value
+\(0.07188\pm0.00008\,\mathrm{m/s}\).
+Neither prediction agreed with the measurement within the 95\% uncertainty criterion, although the prediction based on \(b_{v(t)}\) was closer. The remaining discrepancy suggests the presence of systematic effects not fully represented by the ideal linear-drag model, such as incomplete compensation of other frictional forces or changes in the effective magnetic-damping conditions between measurements.
+
+% ============================================================
+% APPENDIX
+% ============================================================
+
+\appendix
+\section{Appendix}
+
+% ------------------------------------------------------------
+% A.1 DATA PROCESSING
+% ------------------------------------------------------------
+
+\subsection{Data Processing for Part C}
+\label{app:data}
+
+The raw data contained an initial transient region and several abnormal measurements. The data before the maximum measured velocity were first excluded, as they corresponded to the initial stage of the cart motion. After this step, two additional abnormal points remained at the beginning of the data set and were removed before fitting, possibly because of unintended motion introduced while releasing the cart. The same data points were removed from the velocity, time, and force measurements to maintain their correspondence.
+
+% ------------------------------------------------------------
+% A.2 THEORETICAL DERIVATION
+% ------------------------------------------------------------
+
+\subsection{Derivation of the Velocity Models}
+\label{app:derivation}
+
+For the level-track experiment,
+\[
+\frac{dv}{dt}=-\frac{b}{m}v.
+\]
+
+Separating and integrating from \(v_0\) to \(v\) and from \(0\) to \(t\) gives
+\[
+\ln\left(\frac{v}{v_0}\right)
+=-\frac{b}{m}t,
+\]
+hence
+\[
+v(t)=v_0e^{-bt/m}.
+\]
+
+For the inclined track,
+\[
+\frac{dv}{dt}
+=g\sin\theta-\frac{b}{m}v.
+\]
+
+Solving this equation for a cart released from rest gives the first relation in Eq.~\ref{eq:inclined}. Setting \(dv/dt=0\) gives the terminal-velocity relation in the same equation.
+
+% ------------------------------------------------------------
+% A.3 CURVE FITTING
+% ------------------------------------------------------------
+
+\subsection{Curve Fitting, Linearization, and Residuals}
+\label{app:fitting}
+
+For the \(F(v)\) method, the data were fitted with
+\[
+F=kv+c.
+\]
+Since the theoretical model is \(F_{\mathrm{drag}}=-bv\),
+the magnitude of the fitted slope gives \(b=-k\).
+
+For the velocity--time method, taking the logarithm of the level-track model gives
+\[
+\ln v=\ln v_0-\frac{b}{m}t,
+\]
+so the fitted slope is
+\[
+k_{\mathrm{time}}=-\frac{b}{m}.
+\]
+
+For Part C,
+\[
+m_{\mathrm{total}}
+=(0.0730+0.2709+0.5046)\,\mathrm{kg}
+=0.8485\,\mathrm{kg}.
+\]
+
+The uncertainty in this mass is
+\[
+\delta m_{\mathrm{total}}
+=
+\sqrt{(0.00005)^2+(0.00005)^2+(0.00005)^2}
+=
+8.66\times10^{-5}\,\mathrm{kg}.
+\]
+
+Using
+\(b=m_{\mathrm{total}}|k_{\mathrm{time}}|\),
+the uncertainty is
+\[
+\delta b
+=
+\sqrt{
+\left(
+|k_{\mathrm{time}}|\delta m_{\mathrm{total}}
+\right)^2
++
+\left(
+m_{\mathrm{total}}\delta k_{\mathrm{time}}
+\right)^2
+}.
+\]
+
+Substitution gives
+\[
+\delta b
+=
+\sqrt{
+(1.305\times8.66\times10^{-5})^2
++
+(0.8485\times0.002)^2
+}
+=
+1.70\times10^{-3}\,\mathrm{kg/s},
+\]
+which is rounded to
+\[
+\delta b=0.002\,\mathrm{kg/s}.
+\]
+
+Therefore,
+\[
+b_{v(t)}
+=(1.107\pm0.002)\,\mathrm{kg/s}.
+\]
+
+The goodness of fit was evaluated using
+\[
+R^2=
+1-
+\frac{\sum_i(y_i-\hat y_i)^2}
+{\sum_i(y_i-\bar y)^2}.
+\]
+
+\twopics{2_fig7.png}
+{Residual plot for \(F(v)\) linear fit.}
+{fig:res_F}
+{2_fig8.png}
+{Residual plot for $\ln(v)$ vs.\ $t$ linear fit.}
+{fig:res_t}
+
+The \(F(v)\) residuals are approximately centered around zero but show a larger spread and several larger deviations. The residuals of the linearized \(v(t)\) fit are substantially smaller but show a visible oscillatory structure. This indicates that the exponential model describes the overall decay very well but does not remove all systematic variation in the measurements.
+
+% ------------------------------------------------------------
+% A.4 UNCERTAINTY
+% ------------------------------------------------------------
+
+\subsection{Uncertainty Propagation for Terminal Velocity}
+\label{app:uncertainty}
+
+From
+\[
+v_T=\frac{mg\sin\theta}{b},
+\]
+the propagated uncertainty is
+\[
+\delta v_T
+=
+v_T
+\sqrt{
+\left(\frac{\delta m}{m}\right)^2
++
+\left(\frac{\delta g}{g}\right)^2
++
+\left(\cot\theta\,\delta\theta\right)^2
++
+\left(\frac{\delta b}{b}\right)^2
+}.
+\]
+
+For Part D,
+\[
+m_D=(0.2709+0.0730)\,\mathrm{kg}
+=0.3439\,\mathrm{kg},
+\]
+and
+\[
+\delta m_D
+=
+\sqrt{(0.00005)^2+(0.00005)^2}
+=
+7.07\times10^{-5}\,\mathrm{kg}.
+\]
+
+The angular uncertainty must be expressed in radians:
+\[
+\delta\theta
+=
+0.05^\circ\frac{\pi}{180^\circ}
+=
+8.73\times10^{-4}\,\mathrm{rad}.
+\]
+
+Using the \(F(v)\) estimate,
+\[
+v_{T,F(v)}
+=
+\frac{
+(0.3439)(9.79127)\sin(2.00^\circ)
+}{
+0.899
+}
+=
+0.13072\,\mathrm{m/s}.
+\]
+
+Its uncertainty is
+\[
+\delta v_{T,F(v)}
+=
+0.13072
+\sqrt{
+\left(\frac{7.07\times10^{-5}}{0.3439}\right)^2
++
+\left(\frac{5\times10^{-6}}{9.79127}\right)^2
++
+\left[
+\cot(2.00^\circ)(8.73\times10^{-4})
+\right]^2
++
+\left(\frac{0.013}{0.899}\right)^2
+},
+\]
+giving
+\[
+\delta v_{T,F(v)}
+=
+0.00377\,\mathrm{m/s}.
+\]
+
+Therefore,
+\[
+v_{T,F(v)}
+=
+(0.131\pm0.004)\,\mathrm{m/s}.
+\]
+
+Using the \(v(t)\) estimate,
+\[
+v_{T,v(t)}
+=
+\frac{
+(0.3439)(9.79127)\sin(2.00^\circ)
+}{
+1.107
+}
+=
+0.10616\,\mathrm{m/s}.
+\]
+
+Its uncertainty is
+\[
+\delta v_{T,v(t)}
+=
+0.10616
+\sqrt{
+\left(\frac{7.07\times10^{-5}}{0.3439}\right)^2
++
+\left(\frac{5\times10^{-6}}{9.79127}\right)^2
++
+\left[
+\cot(2.00^\circ)(8.73\times10^{-4})
+\right]^2
++
+\left(\frac{0.002}{1.107}\right)^2
+},
+\]
+giving
+\[
+\delta v_{T,v(t)}
+=
+0.00266\,\mathrm{m/s}.
+\]
+
+Therefore,
+\[
+v_{T,v(t)}
+=
+(0.106\pm0.003)\,\mathrm{m/s}.
+\]
+
+\end{document}
