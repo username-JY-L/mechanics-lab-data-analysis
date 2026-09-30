@@ -1,0 +1,444 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{newtxtext,newtxmath}
+
+\geometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm}
+\onehalfspacing
+
+\title{Determination of Damping Mechanisms in a Harmonic Oscillator}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Abstract}
+
+Two ideal springs are attached at both ends of a vehicle positioned on a flat, frictionless track. The purpose of this experiment was to determine the dominant damping mechanism in a two-spring harmonic oscillator and to evaluate the corresponding damping strength. The decay of the oscillation amplitude was analyzed using linear and exponential fitting, together with $R^2$ values and residual plots, to distinguish between sliding friction and drag damping. The experimental angular frequency was also determined and compared with the theoretical prediction.
+
+For Experiment 1, the linear amplitude model gave $R^2=0.990$, compared with $R^2=0.958$ for the exponential model, indicating that sliding friction was the dominant damping mechanism. The corresponding kinetic friction coefficient was $\mu_k=0.00147\pm0.00003$. For Experiment 2, the exponential model gave the higher $R^2$ value, $0.981$ compared with $0.967$, indicating that magnetic drag was dominant, with $\gamma=(0.105\pm0.005)\,\mathrm{s^{-1}}$ and $\tau=(9.48\pm0.44)\,\mathrm{s}$. In both experiments, the measured angular frequencies were lower than the theoretical predictions and did not agree with them within the 95\% uncertainty criterion.
+
+
+\section{Theoretical Background}
+
+For a cart connected between two springs, the effective spring constant is $k_1+k_2$, giving the natural angular frequency
+\[
+\omega_0=\sqrt{\frac{k_1+k_2}{m}}.
+\]
+
+For sliding friction, the amplitude decreases approximately linearly with time. For successive positive turning points, the linear decay can be written as
+\[
+A(t)=A_0-\frac{2\mu_k g}{\pi\omega_0}t.
+\]
+Therefore, if the fitted amplitude relation is written as
+\[
+A(t)=A_0+k_{\mathrm{linear}}t,
+\]
+the kinetic friction coefficient is
+\[
+\mu_k=-\frac{\pi\omega_0 k_{\mathrm{linear}}}{2g}.
+\]
+
+For drag force proportional to velocity, the amplitude decays exponentially,
+\[
+A(t)=A_0e^{-\gamma t}.
+\]
+
+Therefore, a linear relation between $A$ and $t$ is consistent with sliding friction, while a linear relation between $\ln A$ and $t$ is consistent with drag damping.
+
+For the underdamped drag model,
+\[
+\omega_1=\sqrt{\omega_0^2-\gamma^2},
+\]
+and the characteristic decay time is
+\[
+\tau=\frac{1}{\gamma}.
+\]
+
+
+\section{Materials and Methods}
+
+A cart was connected between two springs on a level track, as shown in Figure~\ref{fig:setup}. The spring constants were determined from the change in force corresponding to a measured spring extension. The cart was then displaced in the positive direction and released from rest while its position was recorded using the PASCO system. In Experiment 1, the cart oscillated without magnetic damping. In Experiment 2, the magnetic damping device was positioned close to the track and the measurement was repeated.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{setup.png}
+    \caption{Experimental setup of the two-spring harmonic oscillator.}
+    \label{fig:setup}
+\end{figure}
+
+The directly measured quantities are listed in Table~\ref{tab:measured}.
+
+\begin{table}[H]
+\centering
+\caption{Directly measured quantities used in the experiment.}
+\label{tab:measured}
+\begin{tabular}{lcc}
+\toprule
+Quantity & Value & Uncertainty \\
+\midrule
+Moving mass $m$ & $0.8492\,\mathrm{kg}$ & $0.0001\,\mathrm{kg}$ \\
+Spring 1 initial mass & $0.1603\,\mathrm{kg}$ & $0.0001\,\mathrm{kg}$ \\
+Spring 1 final mass & $0.1240\,\mathrm{kg}$ & $0.0001\,\mathrm{kg}$ \\
+Spring 1 extension & $0.0990\,\mathrm{m}$ & $0.0005\,\mathrm{m}$ \\
+Spring 2 initial mass & $0.1713\,\mathrm{kg}$ & $0.0001\,\mathrm{kg}$ \\
+Spring 2 final mass & $0.1340\,\mathrm{kg}$ & $0.0001\,\mathrm{kg}$ \\
+Spring 2 extension & $0.0990\,\mathrm{m}$ & $0.0005\,\mathrm{m}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section{Results and Discussion}
+
+\subsection{Spring Constants and Theoretical Frequency}
+
+The measured spring constants were $k_1=(3.590\pm0.023)\,\mathrm{N/m}$ and $k_2=(3.689\pm0.023)\,\mathrm{N/m}$. By the measured cart mass, the theoretical natural angular frequency was $\omega_0=(2.928\pm0.007)\,\mathrm{rad/s}$.
+
+
+\subsection{Oscillation and Damping Analysis}
+
+The measured position data and detected positive turning points for both experiments are shown in Figure~\ref{fig:position_compare}.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig1.png}
+
+        \small (a) Experiment 1
+    \end{minipage}
+    \hspace{0.04\textwidth}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig2.png}
+
+        \small (b) Experiment 2
+    \end{minipage}
+
+    \caption{Position as a function of time with detected positive turning points.}
+    \label{fig:position_compare}
+\end{figure}
+
+For Experiment 1, the linear amplitude model gave $R^2=0.990$, while the logarithmic model gave $R^2=0.958$. For Experiment 2, the corresponding values were $R^2=0.967$ and $R^2=0.981$.
+
+The two fitting methods for Experiment 1 are compared in Figure~\ref{fig:fit_exp1}.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig3.png}
+
+        \small (a) Linear $A(t)$ fit
+    \end{minipage}
+    \hspace{0.04\textwidth}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig4.png}
+
+        \small (b) Linearized $\ln(A)$ fit
+    \end{minipage}
+
+    \caption{Comparison of damping models for Experiment 1.}
+    \label{fig:fit_exp1}
+\end{figure}
+
+The corresponding residual plots are shown in Appendix Figure~\ref{fig:residual_exp1}. Both residual plots show systematic curvature rather than purely random scatter, indicating that neither simple model perfectly describes the damping. However, the higher $R^2$ of the linear $A(t)$ model indicates that Experiment 1 is more consistent with sliding-friction damping. The remaining curvature suggests that sliding friction was dominant but was not the only dissipative effect.
+
+Based on the sliding-friction model, the corresponding kinetic friction coefficient was
+\[
+\mu_k=0.00147\pm0.00003.
+\]
+The experimental angular frequency was
+\[
+\omega_{\mathrm{exp},1}=(2.850\pm0.001)\,\mathrm{rad/s}.
+\]
+
+Compared with the theoretical value, the absolute difference was approximately $0.078\,\mathrm{rad/s}$, while the 95\% uncertainty criterion was approximately $0.013\,\mathrm{rad/s}$. Therefore, the experimental and theoretical values did not agree within the 95\% uncertainty criterion.
+
+For Experiment 2, the linear and exponential damping tests are shown in Figure~\ref{fig:fit_exp2}.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig5.png}
+
+        \small (a) Linear $A(t)$ fit
+    \end{minipage}
+    \hspace{0.04\textwidth}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig6.png}
+
+        \small (b) Linearized $\ln(A)$ fit
+    \end{minipage}
+
+    \caption{Comparison of damping models for Experiment 2.}
+    \label{fig:fit_exp2}
+\end{figure}
+
+The corresponding residual plots are shown in Appendix Figure~\ref{fig:residual_exp2}. Both residual plots show systematic curvature, indicating that neither simple model fully describes the damping. Since the logarithmic model gives the higher $R^2$, Experiment 2 is more consistent with exponential drag damping. The remaining curvature may result from mixed damping, because the mechanical friction present in Experiment 1 remained after magnetic damping was added. In addition, using the final resting position as $x=0$ may introduce a small equilibrium offset, which becomes more important at small amplitudes.
+
+Using the exponential model,
+\[
+\gamma=(0.105\pm0.005)\,\mathrm{s^{-1}}
+\]
+and
+\[
+\tau=(9.48\pm0.44)\,\mathrm{s}.
+\]
+
+The theoretical damped frequency was
+\[
+\omega_1=(2.926\pm0.007)\,\mathrm{rad/s},
+\]
+compared with the measured value
+\[
+\omega_{\mathrm{exp},2}=(2.862\pm0.006)\,\mathrm{rad/s}.
+\]
+
+Their difference, $0.064\,\mathrm{rad/s}$, exceeded the 95\% uncertainty criterion of $0.018\,\mathrm{rad/s}$, so the two values did not agree within the 95\% criterion.
+
+
+\section{Conclusion}
+
+This experiment investigated the damping mechanisms of a two-spring harmonic oscillator. Experiment 1 was more consistent with sliding-friction damping, while the magnetic-damping experiment was better described by exponential decay. The fitted parameters were $\mu_k=0.00147\pm0.00003$ and $\tau=(9.48\pm0.44)\,\mathrm{s}$.
+
+In both experiments, the measured angular frequencies were lower than the theoretical predictions and did not satisfy the 95\% uncertainty criterion. The curved residuals suggest that neither ideal damping model fully represents the system. Possible causes include the simultaneous contribution of friction and drag, as well as uncertainty in the equilibrium position caused by static friction. These effects could be reduced by determining the equilibrium position from the oscillation center rather than the final resting position and by better isolating the individual damping mechanisms.
+
+
+\section{Appendix}
+
+\subsection{Natural Angular Frequency}
+
+For each spring, the spring constant was calculated from the measured change in force and extension:
+\[
+k=\frac{\Delta F}{\Delta x}
+=\frac{\Delta m\,g}{\Delta x}.
+\]
+
+For Spring 1,
+\[
+\Delta m_1
+=
+0.1603-0.1240
+=
+0.0363\,\mathrm{kg},
+\]
+so
+\[
+k_1
+=
+\frac{(0.0363)(9.79127)}{0.0990}
+=
+3.590\,\mathrm{N/m}.
+\]
+
+For Spring 2,
+\[
+\Delta m_2
+=
+0.1713-0.1340
+=
+0.0373\,\mathrm{kg},
+\]
+so
+\[
+k_2
+=
+\frac{(0.0373)(9.79127)}{0.0990}
+=
+3.689\,\mathrm{N/m}.
+\]
+
+The uncertainty in the mass difference was
+\[
+\delta(\Delta m)
+=
+\sqrt{(\delta m_{\mathrm{initial}})^2+
+      (\delta m_{\mathrm{final}})^2}
+=
+\sqrt{2}\,(0.0001)
+=
+1.41\times10^{-4}\,\mathrm{kg}.
+\]
+
+For
+\[
+k=\frac{\Delta m\,g}{\Delta x},
+\]
+the uncertainty was calculated as
+\[
+\delta k
+=
+k
+\sqrt{
+\left(\frac{\delta(\Delta m)}{\Delta m}\right)^2+
+\left(\frac{\delta(\Delta x)}{\Delta x}\right)^2
+}.
+\]
+
+Substitution gives approximately
+\[
+\delta k_1=0.023\,\mathrm{N/m},
+\qquad
+\delta k_2=0.023\,\mathrm{N/m}.
+\]
+
+Therefore,
+\[
+k_1=(3.590\pm0.023)\,\mathrm{N/m},
+\qquad
+k_2=(3.689\pm0.023)\,\mathrm{N/m}.
+\]
+
+For the two-spring system, the effective spring constant is $k_1+k_2$, so the theoretical natural angular frequency is
+\[
+\omega_0
+=
+\sqrt{\frac{k_1+k_2}{m}}
+=
+\sqrt{\frac{3.590+3.689}{0.8492}}
+=
+2.928\,\mathrm{rad/s}.
+\]
+
+The uncertainty was calculated using standard uncertainty propagation, giving
+\[
+\omega_0=(2.928\pm0.007)\,\mathrm{rad/s}.
+\]
+
+
+\subsection{Sliding-Friction Model}
+
+For sliding friction, the amplitude decreases approximately linearly with time. For successive positive turning points,
+\[
+A(t)=A_0-\frac{2\mu_k g}{\pi\omega_0}t.
+\]
+
+If
+\[
+A(t)=A_0+k_{\mathrm{linear}}t,
+\]
+then
+\[
+k_{\mathrm{linear}}
+=
+-\frac{2\mu_k g}{\pi\omega_0},
+\]
+and therefore
+\[
+\mu_k
+=
+-\frac{\pi\omega_0k_{\mathrm{linear}}}{2g}.
+\]
+
+
+\subsection{Drag Model}
+
+For exponential damping,
+\[
+A(t)=A_0e^{-\gamma t},
+\]
+and therefore
+\[
+\ln A=\ln A_0-\gamma t.
+\]
+
+The magnitude of the fitted slope gives $\gamma$, from which
+\[
+\tau=\frac{1}{\gamma}.
+\]
+
+For the underdamped oscillator, the theoretical damped angular frequency is
+\[
+\omega_1=\sqrt{\omega_0^2-\gamma^2}.
+\]
+
+
+\subsection{Experimental Frequency}
+
+Since only positive turning points were used, consecutive turning points are separated by one full period. A linear fit of turning-point time against oscillation number was used to obtain $T$, and the experimental angular frequency was calculated from
+\[
+\omega_{\mathrm{exp}}=\frac{2\pi}{T}.
+\]
+
+
+\subsection{Residual Analysis}
+
+The residual plots used to assess the damping models are shown in Figures~\ref{fig:residual_exp1} and \ref{fig:residual_exp2}.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig7.png}
+
+        \small (a) Residuals of $A(t)$
+    \end{minipage}
+    \hspace{0.04\textwidth}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig8.png}
+
+        \small (b) Residuals of $\ln(A)$
+    \end{minipage}
+
+    \caption{Residual analysis for Experiment 1.}
+    \label{fig:residual_exp1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig9.png}
+
+        \small (a) Residuals of $A(t)$
+    \end{minipage}
+    \hspace{0.04\textwidth}
+    \begin{minipage}{0.40\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig10.png}
+
+        \small (b) Residuals of $\ln(A)$
+    \end{minipage}
+
+    \caption{Residual analysis for Experiment 2.}
+    \label{fig:residual_exp2}
+\end{figure}
+
+
+\subsection{95\% Comparison}
+
+The combined uncertainty was calculated as
+\[
+\delta_{\mathrm{combined}}
+=
+\sqrt{
+(\delta\omega_{\mathrm{exp}})^2+
+(\delta\omega_{\mathrm{theory}})^2
+}.
+\]
+
+The experimental and theoretical values were considered consistent at approximately the 95\% level when
+\[
+|\omega_{\mathrm{exp}}-\omega_{\mathrm{theory}}|
+\leq
+2\delta_{\mathrm{combined}}.
+\]
+
+\end{document}
